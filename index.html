@@ -4,7 +4,6 @@
     <title>Weather App</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="script.js"></script>
 </head>
 <body class="text-center">
     <main>
@@ -28,11 +27,12 @@
                     <li>Max Temp: <span id="max-temp">--</span>°</li>
                   </ul>
                   <p class="text-center" id="addition-Text"></p>
-                  <button type="button" onclick="searchCity('imperial')" class="btn btn-outline-dark btn-sm">Fahrenheit </button>
+                  <button type="button" id="fetchMore" class="btn btn-outline-dark btn-sm">Fahrenheit </button>
                 </div>
               </div>
           </div>
         </div>
+    <script defer src="script.js"></script>
     </main>
 </body>
 </html>

@@ -36,17 +36,46 @@ showWeatherData = (weatherData, unit) => {
   const iconLink = `https://openweathermap.org/img/w/${weather[0].icon}.png`
   document.getElementById('city-name').innerText = name
   document.getElementById('weather-type').innerText = weather[0].description
-  document.getElementById('temp').innerText = main.temp + unitObj[unit]
-  document.getElementById('min-temp').innerText = main.temp_min + unitObj[unit]
-  document.getElementById('max-temp').innerText = main.temp_max + unitObj[unit]
+  document.getElementById('temp').innerText = main.temp
+  document.getElementById('min-temp').innerText = main.temp_min
+  document.getElementById('max-temp').innerText = main.temp_max
   document.getElementById('weather-icon').src = iconLink
-
-  if(unit === 'metric'){
-    document.getElementById('addition-Text').innerText = 'Looking for Temperature in Fahrenheit'
-  }else{
-    document.getElementById('addition-Text').innerText = 'Looking for Temperature in Celsius'
-  }
+  document.getElementById('addition-Text').innerText = 'Looking for Temperature in Fahrenheit'
 
 
 }
 
+let fetchData = document.getElementById('fetchMore')
+
+fetchData.addEventListener('click', async () => {
+  try {
+    if (fetchData.innerText === 'Fahrenheit') {
+      await searchCity('metric');
+      fetchData.innerText = 'Celsius';
+      document.getElementById('addition-Text').innerText = 'Looking for Temperature in Celsius';
+    } else {
+      await searchCity('imperial');
+      fetchData.innerText = 'Fahrenheit';
+      document.getElementById('addition-Text').innerText = 'Looking for Temperature in Fahrenheit';
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
+/*fetchData.addEventListener('click', async () => {
+  try {
+    if (fetchData.innerText === 'Fahrenheit') {
+      await searchCity('metric');
+      await updateText('Looking for Temperature in Celsius');
+      await updateFetchDataText('Celsius');
+    } else {
+      await searchCity('imperial');
+      await updateText('Looking for Temperature in Fahrenheit');
+      await updateFetchDataText('Fahrenheit');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}); */
